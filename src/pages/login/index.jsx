@@ -1,9 +1,10 @@
 import { useNavigate  } from "react-router-dom";
-import { MdEmail, MdLock } from 'react-icons/md'
+import { MdEmail, MdLock } from 'react-icons/md';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { api } from '../../services/api';
+
 
 import { useForm } from "react-hook-form";
 
@@ -30,11 +31,15 @@ const Login = () => {
 
             alert('Usuário ou senha inválido')
         }catch(e){
-            //TODO: HOUVE UM ERRO
+            console.log('errors', errors);
         }
     };
 
-    console.log('errors', errors);
+    const onCreateAcc = () => {
+        navigate('/signin')
+    }
+
+    
 
     return (<>
         <Header />
@@ -56,7 +61,7 @@ const Login = () => {
                 </form>
                 <Row>
                     <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText>Criar Conta</CriarText>
+                    <CriarText onClick={ onCreateAcc }>Criar Conta</CriarText>
                 </Row>
                 </Wrapper>
             </Column>
